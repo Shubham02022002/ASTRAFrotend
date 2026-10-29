@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Martian_Mono } from "next/font/google";
+import { Inter, Martian_Mono } from "next/font/google";
 import "./globals.css";
 
 const martian = Martian_Mono({
   subsets: ["latin"],
   axes: ["wdth"],
   variable: "--font-martian",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -19,9 +25,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={martian.variable} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${martian.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
       <body>
-        {/* Runs before paint so a saved light theme never flashes dark. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
